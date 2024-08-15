@@ -31,7 +31,7 @@ with col2:
     image2 = Image.open('sticker.jpg')
     st.image(image2)
     if resp2:
-      st.session_state.resp2. = False
+      st.session_state.resp2 = False
 
 with col3:
   st.subheader('Esta es la 3ra columna')
