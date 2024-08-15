@@ -54,12 +54,4 @@ with st.sidebar:
 st.subheader('Convierte texto a audio')
 text_to_convert = st.text_input('Ingresa tu texto para convertir a audio: ')
 
-if st.button('Generar Audio'):
-    if text_to_convert:
-        tts = gTTS(text=text_to_convert, lang='es')
-        tts.save('audio.mp3')
-        audio_file = open('audio.mp3', 'rb')
-        audio_bytes = audio_file.read()
-        st.audio(audio_bytes, format='audio/mp3')
-    else:
-        st.write('Por favor ingresa un texto para convertir a audio.')
+
