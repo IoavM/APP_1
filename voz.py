@@ -29,6 +29,13 @@ with col2:
     image2 = Image.open('sticker.jpg')
     st.image(image2)
 
-
-  
+with col3:
+  st.subheader('Esta es la 3ra columna')
+  modo = st.radio('Qué modalidad es la principal dn tu interfaz', ('Visual', 'Auditiva', 'Táctil'))
+  if modo == 'visual':
+    st.write('La vista es fundamental para tu interfaz')
+  if modo == 'Auditiva':
+    st.write('La audición es fundamental para tu interfaz')
+  if modo == 'Táctil':
+    st.write('El tacto es fundamental para tu interfaz')
 
