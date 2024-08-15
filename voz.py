@@ -1,6 +1,7 @@
 import streamlit as st
 from PIL import Image
 from gtts import gTTS
+import os
 
 st.title('Primer APP')
 st.header('Primera web de interfaces multimodales')
@@ -52,31 +53,31 @@ with st.sidebar:
 
 # Convertir texto a audio
 st.subheader('Convierte texto a audio')
-text_to_convert = st.text_input('Ingresa tu texto para convertir a audio: ')
-tld='com'
+text_to_convert = st.text_input('Ingresa tu texto para convertir a audio:')
 
-option_lang = st.selectbox(   "Selecciona el lenguaje",("Español", "English"))
-if option_lang=="Español" :
-    lg='es'
-if option_lang=="English" :
-    lg='en'
-def text_to_speech(text, tld,lg):
-    
-    tts = gTTS(text,lang=lg) # tts = gTTS(text,'en', tld, slow=False)
-    try:
-        my_file_name = text
-    except:
-        my_file_name = "audio"
+option_lang = st.selectbox("Selecciona el lenguaje", ("Español", "English"))
+if option_lang == "Español":
+    lg = 'es'
+elif option_lang == "English":
+    lg = 'en'
+
+def text_to_speech(text, lg):
+    tts = gTTS(text, lang=lg)  # gTTS para convertir texto a voz
+    # Asegurarse de que la carpeta 'temp/' exista
+    if not os.path.exists("temp"):
+        os.makedirs("temp")
+    my_file_name = "audio_output"
     tts.save(f"temp/{my_file_name}.mp3")
-    return my_file_name, text
-if st.button("convertir a Audio"):
-     result, output_text = text_to_speech(text, 'com',lg)#'tld
-     audio_file = open(f"temp/{result}.mp3", "rb")
-     audio_bytes = audio_file.read()
-     st.markdown(f"## Tú audio:")
-     st.audio(audio_bytes, format="audio/mp3", start_time=0)
-     with open(f"temp/{result}.mp3", "rb") as f:
-         data = f.read()
+    return my_file_name
 
-
-
+if st.button("Convertir a Audio"):
+    if text_to_convert:
+        result = text_to_speech(text_to_convert, lg)
+        audio_file = open(f"temp/{result}.mp3", "rb")
+        audio_bytes = audio_file.read()
+        st.markdown("## Tu audio:")
+        st.audio(audio_bytes, format="audio/mp3", start_time=0)
+        with open(f"temp/{result}.mp3", "rb") as f:
+            st.download_button('Descargar audio', f, file_name=f"{result}.mp3")
+    else:
+        st.write("Por favor ingresa un texto para convertir a audio.")
