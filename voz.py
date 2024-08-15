@@ -7,5 +7,5 @@ st.write('a')
 image = Image.open('perro.jpg')
 st.image(image)
 
-texto = st.text_input('Escribe un texto: ')
+texto = st.text_input('Escribe un texto: ', 'Mi texto es ')
 
