@@ -75,5 +75,8 @@ if st.button("convertir a Audio"):
      audio_bytes = audio_file.read()
      st.markdown(f"## Tú audio:")
      st.audio(audio_bytes, format="audio/mp3", start_time=0)
+     with open(f"temp/{result}.mp3", "rb") as f:
+         data = f.read()
+
 
 
