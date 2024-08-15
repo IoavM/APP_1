@@ -53,5 +53,27 @@ with st.sidebar:
 # Convertir texto a audio
 st.subheader('Convierte texto a audio')
 text_to_convert = st.text_input('Ingresa tu texto para convertir a audio: ')
+tld='com'
+
+option_lang = st.selectbox(   "Selecciona el lenguaje",("Español", "English"))
+if option_lang=="Español" :
+    lg='es'
+if option_lang=="English" :
+    lg='en'
+def text_to_speech(text, tld,lg):
+    
+    tts = gTTS(text,lang=lg) # tts = gTTS(text,'en', tld, slow=False)
+    try:
+        my_file_name = text
+    except:
+        my_file_name = "audio"
+    tts.save(f"temp/{my_file_name}.mp3")
+    return my_file_name, text
+if st.button("convertir a Audio"):
+     result, output_text = text_to_speech(text, 'com',lg)#'tld
+     audio_file = open(f"temp/{result}.mp3", "rb")
+     audio_bytes = audio_file.read()
+     st.markdown(f"## Tú audio:")
+     st.audio(audio_bytes, format="audio/mp3", start_time=0)
 
 
