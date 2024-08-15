@@ -18,4 +18,10 @@ with col1:
   resp = st. checkbox('Está chevere el front end')
   if resp:
     st.write('Confirmo')
+with col2:
+  st.subheader('Segunda columna')
+  st.write('Pregunta')
+  resp2 = st.checkbox('¿Te gusta programar?')
+  
+  
 
