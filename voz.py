@@ -1,5 +1,6 @@
 import streamlit as st
 from PIL import Image
+from gtts import gTTS
 
 st.title('Primer APP')
 st.header('Primera web de interfaces multimodales')
@@ -21,17 +22,15 @@ with col1:
 with col2:
   st.subheader('Segunda columna')
   st.write('Pregunta ¿Te gusta programar?')
-  resp2 = st.checkbox('Si', key = 'resp2')
-  resp3 = st.checkbox('No',key = 'resp3')
+  resp2 = st.checkbox('Si')
+  resp3 = st.checkbox('No')
   if resp2:
     st.write('Muy bien asi me gusta.')
-    if resp3:  # Desactivar "No" si "Sí" está seleccionado
-        st.session_state.resp3 = False
+    
   if resp3: 
     image2 = Image.open('sticker.jpg')
     st.image(image2)
-    if resp2:
-      st.session_state.resp2 = False
+   
 
 with col3:
   st.subheader('Esta es la 3ra columna')
@@ -45,4 +44,6 @@ with col3:
 with st.sidebar:
   st.subheader('Configura la modalidad')
   mod_radio = st.radio('Escoge la modalidad a usar', ('Visual','Auditiva','Háptica'))
+st.subheader('Convierte texto a audio')
+text = st.text_input('Ingresa tu texto: ')
 
