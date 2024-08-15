@@ -24,7 +24,7 @@ with col2:
   resp2 = st.checkbox('Si')
   resp3 = st.checkbox('No')
   if resp2:
-    st.write('Muy bien aspi me gusta.')
+    st.write('Muy bien asi me gusta.')
   if resp3: 
     image2 = Image.open('sticker.jpg')
     st.image(image2)
