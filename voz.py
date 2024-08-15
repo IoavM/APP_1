@@ -20,8 +20,9 @@ with col1:
     st.write('Confirmo')
 with col2:
   st.subheader('Segunda columna')
-  st.write('Pregunta')
-  resp2 = st.checkbox('¿Te gusta programar?')
+  st.write('Pregunta ¿Te gusta programar?')
+  resp2 = st.checkbox('Si')
+  resp3 = st.checkbox('Ni')
   
   
 
