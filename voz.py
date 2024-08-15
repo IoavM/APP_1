@@ -26,7 +26,8 @@ with col2:
   if resp2:
     st.write('Muy bien aspi me gusta.')
   if resp3: 
-    image2 = Image.open()
+    image2 = Image.open('sticker.jpg')
+    st.image(image2)
 
 
   
