@@ -21,13 +21,17 @@ with col1:
 with col2:
   st.subheader('Segunda columna')
   st.write('Pregunta ¿Te gusta programar?')
-  resp2 = st.checkbox('Si')
-  resp3 = st.checkbox('No')
+  resp2 = st.checkbox('Si', key = 'resp2')
+  resp3 = st.checkbox('No',key = 'resp3')
   if resp2:
     st.write('Muy bien asi me gusta.')
-if resp3: 
+    if resp3:  # Desactivar "No" si "Sí" está seleccionado
+        st.session_state.resp3 = False
+  if resp3: 
     image2 = Image.open('sticker.jpg')
     st.image(image2)
+    if resp2:
+      st.session_state.resp2. = False
 
 with col3:
   st.subheader('Esta es la 3ra columna')
