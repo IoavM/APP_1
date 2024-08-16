@@ -78,4 +78,6 @@ if st.button("Convertir a Audio"):
         st.markdown("## Tu audio:")
         st.audio(audio_bytes, format="audio/mp3", start_time=0)
         with open(f"temp/{result}.mp3", "rb") as f:
-
+            st.download_button('Descargar audio', f, file_name=f"{result}.mp3")
+    else:
+        st.write("Por favor, ingresa un texto para convertir a audio.")
